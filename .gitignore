@@ -1,0 +1,6 @@
+.DS_Store
+.idea/
+pict/
+build/
+*.docx
+.initialize-pict.sh

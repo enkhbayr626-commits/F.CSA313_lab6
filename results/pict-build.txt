@@ -1,0 +1,54 @@
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o api/combination.o api/combination.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o api/deriver.o api/deriver.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o api/exclusion.o api/exclusion.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o api/model.o api/model.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o api/parameter.o api/parameter.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o api/pictapi.o api/pictapi.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o api/task.o api/task.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o api/worklist.o api/worklist.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/ccommon.o cli/ccommon.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/cmdline.o cli/cmdline.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/common.o cli/common.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/cparser.o cli/cparser.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/ctokenizer.o cli/ctokenizer.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/gcd.o cli/gcd.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/gcdexcl.o cli/gcdexcl.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/gcdmodel.o cli/gcdmodel.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/model.o cli/model.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/mparser.o cli/mparser.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/pict.o cli/pict.cpp
+g++ -fPIC -pipe -std=c++11 -O2 -Iapi   -c -o cli/strings.o cli/strings.cpp
+g++ api/combination.o api/deriver.o api/exclusion.o api/model.o api/parameter.o api/pictapi.o api/task.o api/worklist.o cli/ccommon.o cli/cmdline.o cli/common.o cli/cparser.o cli/ctokenizer.o cli/gcd.o cli/gcdexcl.o cli/gcdmodel.o cli/model.o cli/mparser.o cli/pict.o cli/strings.o -o pict
+
+Build command: make -j4
+Source location: ~/tools/pict
+
+pict commit ab76c25 2026-09-08
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+GNU Make 4.3
+
+PICT usage
+Pairwise Independent Combinatorial Testing
+
+Usage: pict model [options]
+
+Options:
+ /o:N|max         - Order of combinations (default: 2)
+ /d:C             - Separator for values  (default: ,)
+ /a:C             - Separator for aliases (default: |)
+ /n:C             - Negative value prefix (default: ~)
+ /e:file          - File with seeding rows
+ /r[:N]           - Randomize generation, N - seed
+ /b:N             - Try N seeds, keep the smallest suite
+ /t:N             - Number of worker threads (default: auto)
+ /f[:text|json]   - Output format (default: text)
+ /c               - Case-sensitive model evaluation
+ /s               - Show model statistics
+
+Smoke model: A=One,Two; B=On,Off
+A	B
+One	Off
+One	On
+Two	On
+Two	Off
+smoke exit=0

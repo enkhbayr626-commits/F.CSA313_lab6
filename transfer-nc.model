@@ -1,0 +1,5 @@
+# Transfer categories; setup and exchange-rate mapping are described in README.md.
+From: Valid, Frozen, Missing
+To: Valid, Missing, SameAsFrom
+Amount: Zero, Normal, AtBalance, OverBalance, OverLimit
+Currency: Same, Different

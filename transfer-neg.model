@@ -1,0 +1,16 @@
+# Same categories and constraints; ~ marks the seven ERROR values.
+From: Valid, ~Frozen, ~Missing
+To: Valid, ~Missing, ~SameAsFrom
+Amount: ~Zero, Normal, AtBalance, ~OverBalance, ~OverLimit
+Currency: Same, Different
+
+# ERROR isolation, with one explicit Frozen + Missing precedence scenario.
+IF [From] = "Missing" THEN [To] = "Valid" AND [Amount] = "Normal" AND [Currency] = "Same";
+IF [From] = "Frozen" THEN [To] IN {"Valid", "Missing"} AND [Amount] = "Normal" AND [Currency] = "Same";
+IF [To] = "Missing" THEN [From] IN {"Valid", "Frozen"} AND [Amount] = "Normal" AND [Currency] = "Same";
+IF [To] = "SameAsFrom" THEN [From] = "Valid" AND [Amount] = "Normal" AND [Currency] = "Same";
+IF [Amount] IN {"Zero", "OverBalance", "OverLimit"} THEN [From] = "Valid" AND [To] = "Valid" AND [Currency] = "Same";
+# SINGLE: exactly one valid AtBalance configuration.
+IF [Amount] = "AtBalance" THEN [From] = "Valid" AND [To] = "Valid" AND [Currency] = "Same";
+# Currency conversion is paired with the normal success path.
+IF [Currency] = "Different" THEN [From] = "Valid" AND [To] = "Valid" AND [Amount] = "Normal";
